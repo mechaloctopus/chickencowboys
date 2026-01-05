@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Cowboys – Story & Game Design Document</title>
+    <!-- Use accessible fonts for a professional yet friendly feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5a4e7c;
+            --secondary-color: #9c88ff;
+            --accent-color: #e1b12c;
+            --bg-color: #f5f4fa;
+            --text-color: #333;
+            --heading-font: 'Merriweather', serif;
+            --body-font: 'Open Sans', sans-serif;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: var(--body-font);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .title-page {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .title-page h1 {
+            font-family: var(--heading-font);
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .title-page p.tagline {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .title-page .image-placeholder {
+            border: 3px dashed #ddd;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            font-style: italic;
+            color: #888;
+        }
+        .table-of-contents {
+            margin: 40px 0;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .table-of-contents h2 {
+            font-family: var(--heading-font);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        .table-of-contents ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .table-of-contents li {
+            margin: 8px 0;
+        }
+        .table-of-contents a {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        section {
+            margin-bottom: 60px;
+        }
+        section h2 {
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        section h3 {
+            font-family: var(--heading-font);
+            font-size: 1.4rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        section p {
+            margin-bottom: 15px;
+        }
+        .image-placeholder {
+            border: 3px dashed #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-style: italic;
+            color: #aaa;
+        }
+        .lyrics {
+            background: #f7f4ff;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95rem;
+            white-space: pre-line;
+            color: #444;
+            margin-top: 20px;
+        }
+        .callout {
+            background: #fff;
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cover Page -->
+        <div class="title-page">
+            <h1>Chicken Cowboys</h1>
+            <p class="tagline">An Epic Tale of Courage, Community, and the Battle Against Darkness</p>
+            <div class="image-placeholder" data-prompt="heroic lone chicken with a cowboy hat facing a looming shadowy monster, chibi style, warm dusk lighting">
+                <!-- Image prompt: heroic lone chicken with a cowboy hat facing a looming shadowy monster, chibi style, warm dusk lighting -->
+            </div>
+            <p>Created by a passionate solo developer, <em>Chicken Cowboys</em> invites players into a world where a humble chicken rises to confront unimaginable evil. This document explores the narrative, mechanics, and vision behind the game, tailored for potential partners and investors.</p>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="table-of-contents">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#story">Story Outline</a></li>
+                <li><a href="#farm">The Farm: Eggs & Growth</a></li>
+                <li><a href="#rodeo">Stat Growth & Rodeo</a></li>
+                <li><a href="#road">Crossing the Road & the Outerlands</a></li>
+                <li><a href="#volcano">Volcano & The Dungeon Key</a></li>
+                <li><a href="#dungeon">Dungeon & The Battle Against Evil</a></li>
+                <li><a href="#farmupgrades">Coop Upgrades & Berry Farm</a></li>
+                <li><a href="#breeding">Breeding & Exotic Chickens</a></li>
+                <li><a href="#endgame">Endgame & Infinite Replay</a></li>
+                <li><a href="#song">Theme Song</a></li>
+                <li><a href="#about">About the Creator</a></li>
+                <li><a href="#conclusion">Conclusion & Opportunity</a></li>
+            </ul>
+        </div>
+
+        <!-- Introduction -->
+        <section id="intro">
+            <h2>Introduction</h2>
+            <p><em>Chicken Cowboys</em> is more than a game; it’s a saga. At its heart lies a single chicken, born of an egg, who will become the savior of a small town. This narrative-driven experience walks players through the humble routines of farm life, the exhilaration of competition, the terror of dark dungeons and the joy of building a community. In a world filled with monstrous threats, one chicken and a steadfast cowboy ally must stand up to save their friends—and then turn their attention back to the simpler joys of berry farming and raising a family.</p>
+            <p>This document presents a full, coherent storyline along with the design philosophy that supports each game system. We will explore how gameplay loops are woven into the story, how upgrades and breeding feed back into the narrative, and how the darkness creeping at the edge of town offers endless replayability.</p>
+        </section>
+
+        <!-- Story Outline -->
+        <section id="story">
+            <h2>Story Outline</h2>
+            <p>Our tale begins out past the water tower, where dust meets wind. This small, dusty town thrives on its rodeo—a weekly spectacle where chickens and cowboys show off their skills to the cheers of the community. But when cats start disappearing and a dark force emerges from beneath the earth, the rodeo is closed and the town’s future is cast into shadow. The hero of our story is not a wealthy rancher or a seasoned warrior; it’s an ordinary chicken with an extraordinary destiny.</p>
+            <p>The narrative is divided into several distinct acts, each one carrying the player deeper into the world’s mysteries and closer to the heart of the evil that threatens it. Throughout this journey, the chicken will grow from a tentative hatchling into a seasoned fighter, gaining allies and mastering new skills. The story is elevated by the legendary theme song—an ode to the bravery of our heroes and the horrors they face.</p>
+            <div class="image-placeholder" data-prompt="quiet dusty town with a water tower and rodeo ring in the background, chibi style">
+                <!-- Image prompt: quiet dusty town with a water tower and rodeo ring in the background, chibi style -->
+            </div>
+        </section>
+
+        <!-- The Farm -->
+        <section id="farm">
+            <h2>The Farm: Eggs & Growth</h2>
+            <p>Our hero’s journey begins with the simplest of tasks: caring for a single egg. Once hatched, this chicken will lay an egg every five minutes—little gifts that are the lifeblood of the economy. Players sell eggs to earn gold and purchase more chickens. The farm grows from a single coop to a bustling sanctuary filled with feathered companions. The mundane is celebrated: feeding the chickens to improve their happiness, upgrading coops to house new arrivals, and balancing resource management to accelerate growth.</p>
+            <p>This first phase teaches patience and reward. Watching the first chick hatch and seeing the farm expand fosters emotional investment. The early days are peaceful, the perfect setup for the hardships to come.</p>
+            <div class="image-placeholder" data-prompt="cozy farmyard with chickens and eggs scattered about, warm morning light">
+                <!-- Image prompt: cozy farmyard with chickens and eggs scattered about, warm morning light -->
+            </div>
+        </section>
+
+        <!-- Rodeo -->
+        <section id="rodeo">
+            <h2>Stat Growth & Rodeo</h2>
+            <p>As the flock grows, one chicken begins to stand out. With the help of chicken supplements—mysterious tonics that boost strength, speed, peck, scratch and balance—this chosen bird becomes a champion. The rodeo is where dreams are made and broken. Only chickens with adequate stats may enter, and each event trains those stats at a rapid clip. Players must decide when to risk their prized chicken in dangerous competitions and when to wait and grow.</p>
+            <p>The rodeo introduces risk and choice. Injury and exhaustion loom, yet the promise of glory and faster growth is irresistible. It is here that the famous <em>Chicken Ride</em> mini-game enthralls the community. Although the rodeo is closed during the darkest times, the ride moves to the open fields, remaining a challenging, almost unwinnable distraction even in the bleakest moments.</p>
+            <div class="image-placeholder" data-prompt="cheerful rodeo arena with chickens performing tricks, vibrant banners, sunset sky">
+                <!-- Image prompt: cheerful rodeo arena with chickens performing tricks, vibrant banners, sunset sky -->
+            </div>
+        </section>
+
+        <!-- Crossing the Road -->
+        <section id="road">
+            <h2>Crossing the Road & the Outerlands</h2>
+            <p>Once our champion chicken has mastered the rodeo, a new challenge emerges: crossing the road. This simple act becomes a rite of passage, a test of courage that leads our hero into unknown lands. Behind the road lies the Outerlands—a wild realm filled with obstacles, ancient spirits and secrets.</p>
+            <p>The key to navigating the Outerlands is balance. Guided by the Indian Chief’s flute, the chicken ventures into forests and cliffs, honing precise movements and discovering lost lore. The flute’s melodies echo in the player’s mind, a constant reminder that the world is larger and stranger than the farm might suggest. Here, the chicken learns that physical strength must be balanced with grace.</p>
+            <div class="image-placeholder" data-prompt="brave chicken stepping onto a deserted road under a pale moon with mysterious lights beyond, chibi style">
+                <!-- Image prompt: brave chicken stepping onto a deserted road under a pale moon with mysterious lights beyond, chibi style -->
+            </div>
+        </section>
+
+        <!-- Volcano & Key -->
+        <section id="volcano">
+            <h2>Volcano & The Dungeon Key</h2>
+            <p>Deep within the Outerlands lies a towering volcano—a molten furnace rumoured to hide the key to the old abandoned mine. To reach it, the chicken must take to the skies. The <em>Flappy Chicken</em> mini-game is a test of endurance and dexterity. Our hero flaps its wings to keep aloft while dodging rocky outcrops and fierce winds, soaring over a wall that separates the farm from the inferno beyond.</p>
+            <p>Inside the volcano, the air is thick with heat and danger. Lava monsters leap from bubbling pools, their molten skin radiant and deadly. The brave chicken fights valiantly, its feathers scorched but its spirit unbroken. Defeating these fiery foes rewards the key—an ancient artifact that unlocks the dungeon door back at the abandoned mine.</p>
+            <div class="image-placeholder" data-prompt="chicken flying above molten lava inside a fiery volcano, battling lava monsters, intense scene">
+                <!-- Image prompt: chicken flying above molten lava inside a fiery volcano, battling lava monsters, intense scene -->
+            </div>
+        </section>
+
+        <!-- Dungeon & Evil -->
+        <section id="dungeon">
+            <h2>Dungeon & The Battle Against Evil</h2>
+            <p>Armed with the key, the chicken returns to the old mine. The dungeon door creaks open, revealing a network of corridors carved into bedrock. Here, nightmares lurk: skeletal beasts, spiders with legs like shadows, vampires that swoop from the ceiling. Every monster is a test of will and cunning.</p>
+            <p>The legend of the Chicken Cowboy is born in these halls. The cowboy, initially an opponent in the rodeo, becomes the chicken’s staunchest ally after a fateful duel. Together they plunge into the darkness—one riding the other, both firing at the creatures crawling in the gloom. The synergy between beak and blade turns the tide, and their bravery rings through the tunnels like thunder.</p>
+            <p>At the heart of the dungeon lies the mega snake, monstrous and ravenous. It hoards the town’s missing cats, intending to sate its hunger. The battle is relentless. Wave after wave of smaller monsters distract the duo while the snake coils and strikes. Through perseverance, strategy, and sheer courage, the chicken and cowboy prevail. The cats are freed, and the rodeo can reopen. But evil does not die; it only retreats, regaining strength for the next inevitable assault.</p>
+            <div class="image-placeholder" data-prompt="epic battle between a heroic chicken and a cowboy against a massive snake in a dark cave, heroic lighting">
+                <!-- Image prompt: epic battle between a heroic chicken and a cowboy against a massive snake in a dark cave, heroic lighting -->
+            </div>
+        </section>
+
+        <!-- Farm Upgrades & Berry Farm -->
+        <section id="farmupgrades">
+            <h2>Coop Upgrades & Berry Farm</h2>
+            <p>With the dungeon conquered and the cats safely returned, peace settles over the town once more. The rodeo resumes, the crowd roars, and the chicken can finally concentrate on building the farm of its dreams. New coop upgrades allow players to house ever more chickens and improve living conditions. These upgrades are not merely cosmetic; they represent resilience, community and the promise of growth.</p>
+            <p>Beyond coops, the land bursts with rows of berry bushes. Players experiment with feeding their chickens different berries. After being fed 100 strawberries, a chicken gains the strawberry trait—a brilliant red hue and a subtle sweetness in its demeanor. Blueberries yield blueberry chickens, and many other foods promise equally delightful transformations. Farming and experimentation are intertwined, rewarding curiosity with new varieties of chickens.</p>
+            <div class="image-placeholder" data-prompt="lush berry farm with chickens pecking at strawberries and blueberries, vibrant harvest">
+                <!-- Image prompt: lush berry farm with chickens pecking at strawberries and blueberries, vibrant harvest -->
+            </div>
+        </section>
+
+        <!-- Breeding & Exotic Chickens -->
+        <section id="breeding">
+            <h2>Breeding & Exotic Chickens</h2>
+            <p>Once peace is won and the farm thrives, a new frontier opens: breeding. The player can pair chickens to create offspring with inherited traits. Each chicken carries hidden metadata—attributes like color, feather patterns, aura effects and personality quirks. By mixing these traits, players can discover exotic variations and build a lineage of champions. Some chickens may develop shimmering feathers, others may inherit fiery temperaments; some may even surprise their owners with unexpected combinations.</p>
+            <p>An in‑house engine generates visuals for each newly bred chicken automatically, ensuring that every creature looks as distinctive as its genetic code. These exotic chickens are more than trophies; they can enter the rodeo, explore dungeons and be sold or auctioned in a vibrant online market. Players trade, show off their prized breeds, and even style their chickens and cowboys with accessories and clothing. Breeding adds depth and collectability, turning the farm into a place of endless discovery.</p>
+            <div class="image-placeholder" data-prompt="a collection of exotic chickens displaying unusual colors and patterns, each unique">
+                <!-- Image prompt: a collection of exotic chickens displaying unusual colors and patterns, each unique -->
+            </div>
+        </section>
+
+        <!-- Endgame & Infinite Replay -->
+        <section id="endgame">
+            <h2>Endgame & Infinite Replay</h2>
+            <p>The victory over the dungeon is not the end; it’s the beginning of a cycle. Every few phases, the evil that lurks underground regains strength, returning stronger and more cunning. The chicken and cowboy must once again descend into the depths, facing foes with higher health, smarter tactics and darker magic. Gold and loot from these battles fund better weapons and upgrades, enabling the duo to keep pace with the escalating threat.</p>
+            <p>This cyclical endgame ensures the game never truly ends. Players can reset progress while retaining some of their hard‑earned stats, allowing them to advance faster in subsequent runs. New traits, recipes and upgrades are introduced over time, keeping the experience fresh and engaging. The interplay between cozy farm life and heroic monster hunting creates an addictive loop that invites players back, again and again.</p>
+            <div class="image-placeholder" data-prompt="heroic chicken and cowboy standing victorious with monsters lurking in the shadows behind them, hinting at future battles">
+                <!-- Image prompt: heroic chicken and cowboy standing victorious with monsters lurking in the shadows behind them, hinting at future battles -->
+            </div>
+        </section>
+
+        <!-- Theme Song -->
+        <section id="song">
+            <h2>Theme Song</h2>
+            <p>A memorable song captures the spirit of <em>Chicken Cowboys</em>. It tells of dusty trails, roaring rodeos, creeping darkness and triumphant heroes. The lyrics weave the game’s narrative into an anthem that players will hum long after they leave the keyboard. Presented here in full, the song speaks to the courage of a lone chicken and its steadfast cowboy companion.</p>
+            <div class="lyrics">
+Out past the water tower, where the dust meets the wind
+Two cowboy brothers ridin’ chickens ridin' fast eating zyns
+Boots on the stirrups, feathers in the wind
+Friday night lights at the rodeo again
+
+They’d race those chickens ‘round the county line
+Laughin’ loud, drinkin’ cheap red wine
+Small town life, never needed more
+Just chicken dust, chicken dreams, and a chicken rodeo floor
+
+Pre‑Chorus
+But the moon turned red on the edge of town
+When the cats went missin’, not a sound
+Something crawled out from the dark that night
+And the world went wrong ‘neath pale moonlight
+
+Chorus
+Chicken cowboys, saddle up and ride
+Claws in the shadows, fear in their eyes
+From vampires to wolves, to spiders tall
+They ain’t backin’ down, the monsters will fall
+Feathers flyin’ under desert skies
+Chicken cowboys — justice rides tonight
+
+Verse 2
+Snakes in the grass and scorpions too
+Red blobs oozin’ where the graveyard grew
+Werewolves howlin’, fangs in the dark
+Giant legs scratchin’ on the old mine mark
+
+They strapped on courage, spurs rang loud
+Chickens strutted proud, a random Japanese guy bowed,
+No silver spoon, no crown of gold
+Just grit, beaks, and heat pulsing through the cold
+
+Pre‑Chorus
+They tracked that evil through ash and stone
+Down where the mountain groans alone
+An abandoned mine, a dungeon deep
+Where nightmares crawl and shadows creep
+
+Chorus
+Chicken cowboys, don’t you blink
+Into the dungeon, straight to the brink
+Steel and feathers, beak and blade
+Face every horror the dark has made
+When the night’s alive and the dead arise
+Chicken cowboys — hear the battle cry
+
+Bridge
+Torchlight flickers on ancient walls
+Echoes of screams and demon calls
+One step forward, no turnin’ back
+Every monster’s on the attack
+
+But brothers stand where fear would fall
+Cluckin’ thunder shakes the hall
+Every swing, every fight
+Brings back dawn from endless night
+
+Final Chorus
+Chicken cowboys, legends now
+Blood and dust on feathered brows
+They chased the evil underground
+Till not one monster stuck around
+Now the sun comes up, the town survives
+Chicken cowboys — keep hope alive
+
+Outro
+Now the cats are home, the lights burn bright
+Rodeo’s back on a Saturday night
+If you hear a cluck when the crowd gets loud
+That’s chicken cowboys — standin’ proud
+
+Yeah… chicken cowboys
+            </div>
+        </section>
+
+        <!-- About the Creator -->
+        <section id="about">
+            <h2>About the Creator</h2>
+            <p><em>Chicken Cowboys</em> is the passion project of a solo developer who dreamed of blending the meditative joy of farming with the heart‑pounding excitement of battling monsters. This creator has poured countless hours into crafting systems that feel rewarding and a story that resonates. Every line of code, every mechanic and every narrative beat reflects a singular vision: to give players a world where innocence and heroism can exist in the same breath.</p>
+            <p>As a one‑person team, the creator handles design, programming, writing and more. They have built an engine that procedurally generates new chickens based on metadata, ensuring that every player’s experience is unique and personal. Support from partners and investors will help expand the game’s scope, add new content and bring this epic tale to a wider audience.</p>
+            <div class="image-placeholder" data-prompt="portrait of a dedicated game developer at their desk, working passionately on code and designs, warm light">
+                <!-- Image prompt: portrait of a dedicated game developer at their desk, working passionately on code and designs, warm light -->
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section id="conclusion">
+            <h2>Conclusion & Opportunity</h2>
+            <p><em>Chicken Cowboys</em> offers a sweeping narrative that takes players from pastoral quietude to fiery volcanoes and haunted dungeons, always anchored by the warmth of home. The combination of simple pleasures and high stakes creates an emotional journey unlike any other. With layers of gameplay that cater to both casual and committed audiences, this project promises depth, replayability and a loyal community.</p>
+            <p>Your investment will bring this world to life with polish and scale. Funds will go toward art, sound, network infrastructure, testing and the development of new mechanics. Together, we can ensure that our courageous chicken and cowboy continue to battle evil, breed extraordinary offspring and inspire players around the globe.</p>
+            <p>Thank you for considering <strong>Chicken Cowboys</strong>. We look forward to forging an alliance that will transform this dream into reality.</p>
+        </section>
+    </div>
+</body>
+</html>
